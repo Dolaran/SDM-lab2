@@ -15,8 +15,15 @@ class List {
         }
     }
 
-    insert() {
+    insert(data, index) {
+        const isString = typeof data;
 
+        if (data && isString && data.length === 1) {
+            if (index < 0 || index > this.list.length) {
+                return 'Error. Index out of range.';
+            }
+            this.list.splice(index, 0, data);
+        }
     }
     delete(index) {
         if (index < 0 || index >= this.list.length) {
@@ -30,12 +37,21 @@ class List {
         this.list = filteredList;
     }
 
-    get() {
-
+    get(index) {
+        if (index < 0 || index >= this.list.length) {
+            return null;
+        }
+        return this.list[index];
     }
 
     clone() {
-
+        const newList = new List();
+        let i = 0;
+        while (i < this.list.length) {
+            newList.append(this.list[i]);
+            i++;
+        }
+        return newList;
     }
 
     reverse() {
@@ -55,7 +71,10 @@ class List {
     }
 
     extend() {
-
+        for (let i = 0; i < list.size(); i++) {
+            this.list.push(list.get(i));
+        }
+        return this.list;
     }
 }
 
