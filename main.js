@@ -80,7 +80,7 @@ class List {
         this.list = [];
     }
 
-    extend(list) {
+    extend() {
         for (let i = 0; i < list.size(); i++) {
             this.list.push(list.get(i));
         }
