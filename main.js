@@ -4,18 +4,15 @@ class Node {
         this.next = null;
     }
 }
-
 class RingList {
     constructor() {
         this.head = null;
         this.tail = null;
         this.length = 0;
     }
-
     size() {
         return this.length;
     }
-
     append(data) {
         const isString = typeof data === 'string';
         if (isString && data.length === 1) {
@@ -32,7 +29,6 @@ class RingList {
             console.log('Error. Wrong input data type, expected type char.');
         }
     }
-
     insert(data, index) {
         const isString = typeof data === 'string';
         if (isString && data.length === 1) {
@@ -63,7 +59,6 @@ class RingList {
             console.log('Error. Wrong input data type, expected type char.');
         }
     }
-
     delete(index) {
         if (index < 0 || index >= this.length) {
             return 'Error. Index out of range.';
@@ -153,8 +148,11 @@ class RingList {
             i++;
         }
         this.head = prev;
-        this.tail = this.head.next;
+        if (this.length > 0) {
+            this.tail = this.head.next;
+        }
     }
+
     findFirst(data) {
         let current = this.head;
         let i = 0;
@@ -195,3 +193,5 @@ class RingList {
         }
     }
 }
+
+module.exports = RingList;
