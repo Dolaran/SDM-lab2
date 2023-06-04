@@ -58,12 +58,22 @@ class List {
         this.list.reverse();
     }
 
-    findFirst() {
-
+    findFirst(data) {
+        for (let i = 0; i < this.list.length; i++) {
+            if (this.list[i] === data) {
+                return i;
+            }
+        }
+        return -1;
     }
 
-    findLast() {
-
+    findLast(data) {
+        for (let i = this.list.length - 1; i >= 0; i--) {
+            if (this.list[i] === data) {
+                return i;
+            }
+        }
+            return -1;
     }
 
     clear() {
